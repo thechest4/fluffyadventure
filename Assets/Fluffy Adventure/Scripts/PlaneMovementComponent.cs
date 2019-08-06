@@ -7,20 +7,21 @@ public class PlaneMovementComponent : MonoBehaviour
     [SerializeField]
     float movementSpeed = 0.1f; //speed in m/s
 
-    ARPlaneFinder arPlaneFinder = null;
-    public ARPlaneFinder PlaneFinder
+    [SerializeField]
+    float acceptableDistance = 1.0f;
+
+    Animator animator = null;
+    public Animator DogAnimator
     {
         get
         {
-            return arPlaneFinder;
+            return animator;
         }
         set
         {
-            arPlaneFinder = value;
+            animator = value;
         }
     }
-
-    Bounds cachedPlaneBounds;
 
     GameObject currentMovementTarget;
     public GameObject CurrentMovementTarget
@@ -35,37 +36,54 @@ public class PlaneMovementComponent : MonoBehaviour
         }
     }
 
+    bool canMove;
+    public bool CanMove
+    {
+        get
+        {
+            return canMove;
+        }
+        set
+        {
+            canMove = value;
+        }
+    }
+
     void Start()
     {
-        currentMovementTarget = Camera.main.gameObject;   
+        currentMovementTarget = Camera.main.gameObject;
+        canMove = true;
     }
 
     void Update()
     {
-        if (arPlaneFinder == null)
+        if (!canMove)
         {
             return;
         }
 
         Vector3 movementDirection = currentMovementTarget.transform.position - transform.position;
         movementDirection.y = 0.0f; //zero out the vertical coordinate to keep movement horizontal
+
+        float currentDistanceToTarget = movementDirection.magnitude;
+
         movementDirection.Normalize();
 
         Vector3 translationVector = movementSpeed * movementDirection * Time.deltaTime;
         Vector3 newPosition = transform.position + translationVector;
 
-        if (cachedPlaneBounds == default)
+        bool hasMoved = false;
+        if (currentDistanceToTarget > acceptableDistance)
         {
-            float boundsSizeX = arPlaneFinder.SurfacePlane.ExtentX;
-            float boundsSizeZ = arPlaneFinder.SurfacePlane.ExtentZ;
-            float boundsSizeY = 10.0f;
+            transform.forward = movementDirection;
+            transform.position = newPosition;
 
-            cachedPlaneBounds = new Bounds(arPlaneFinder.SurfacePlane.CenterPose.position, new Vector3(boundsSizeX, boundsSizeY, boundsSizeZ));
+            hasMoved = true;
         }
 
-        if (cachedPlaneBounds.Contains(newPosition))
+        if (animator != null)
         {
-            transform.position = newPosition;
+            animator.SetBool("IsWalking", hasMoved);
         }
     }
 }
