@@ -11,6 +11,12 @@ public class ButtonPanel : MonoBehaviour
     [SerializeField]
     Button standButton = null;
 
+    [SerializeField]
+    Button foodButton = null;
+
+    [SerializeField]
+    FoodManager foodManager = null;
+
     GameObject spawnedPet = null;
     public GameObject SpawnedPet
     {
@@ -35,12 +41,17 @@ public class ButtonPanel : MonoBehaviour
         {
             standButton.onClick.AddListener(Stand);
         }
+
+        if (foodButton)
+        {
+            foodButton.onClick.AddListener(LaunchFood);
+        }
     }
 
     void Sit()
     {
         spawnedPet.GetComponentInChildren<Animator>().SetBool("IsSitting", true);
-        spawnedPet.GetComponent<PlaneMovementComponent>().CanMove = false;
+        spawnedPet.GetComponent<PetMovementBehavior>().CanMove = false;
 
         sitButton.gameObject.SetActive(false);
         standButton.gameObject.SetActive(true);
@@ -49,9 +60,17 @@ public class ButtonPanel : MonoBehaviour
     void Stand()
     {
         spawnedPet.GetComponentInChildren<Animator>().SetBool("IsSitting", false);
-        spawnedPet.GetComponent<PlaneMovementComponent>().CanMove = true;
+        spawnedPet.GetComponent<PetMovementBehavior>().CanMove = true;
 
         sitButton.gameObject.SetActive(true);
         standButton.gameObject.SetActive(false);
+    }
+
+    void LaunchFood()
+    {
+        if (foodManager != null)
+        {
+            foodManager.LaunchFood();
+        }
     }
 }

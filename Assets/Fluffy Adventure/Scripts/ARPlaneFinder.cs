@@ -30,6 +30,8 @@ public class ARPlaneFinder : MonoBehaviour
         }
     }
 
+    //This class is responsible for making the calls to the ARCore logic to create the plane and anchor for our content
+    //An assumption I'm making here is that once we've detected an appropriate plane, we'll never need to find a new one
     void Update()
     {
         // If the player has not touched the screen, we are done with this update.

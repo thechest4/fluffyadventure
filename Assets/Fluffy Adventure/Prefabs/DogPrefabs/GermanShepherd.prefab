@@ -1550,6 +1550,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6366479150821028401}
   - component: {fileID: 6366479150815607885}
+  - component: {fileID: 7654406558693595814}
   m_Layer: 0
   m_Name: SM_GermanShepherd_01
   m_TagString: Untagged
@@ -1664,3 +1665,17 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.000000009313226, y: -0.026036747, z: 0.09034608}
     m_Extent: {x: 0.045073755, y: 0.10734234, z: 0.13860275}
   m_DirtyAABB: 0
+--- !u!64 &7654406558693595814
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6366479150820884177}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300012, guid: 4813058df6cbc544c979b2b5b9882a81, type: 3}

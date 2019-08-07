@@ -43,6 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a97fe021451ad8a41be6edf2d8bc152c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 0.1
-  acceptableDistance: 0.6
-  animator: {fileID: 0}
+  movementSpeed: 0.2
+  acceptableDistance: 0.4

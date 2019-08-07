@@ -8,6 +8,13 @@ public class DogTypesScriptableObject : ScriptableObject
     [SerializeField]
     GameObject[] dogPrefabs = null;
 
+    public int NumDogTypes
+    {
+        get
+        {
+            return dogPrefabs.Length;
+        }
+    }
 
     public GameObject GetRandomDogType()
     {
@@ -16,7 +23,7 @@ public class DogTypesScriptableObject : ScriptableObject
             return null;
         }
 
-        int randomIndex = Random.Range(0, dogPrefabs.Length - 1);
+        int randomIndex = Random.Range(0, dogPrefabs.Length);
 
         return dogPrefabs[randomIndex];
     }

@@ -102,6 +102,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4645039116102036603}
   - component: {fileID: 4645039116115475185}
+  - component: {fileID: 5546573727108643146}
   m_Layer: 0
   m_Name: SM_Chihuahua_01
   m_TagString: Untagged
@@ -218,6 +219,20 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.000000014901161, y: -0.011537634, z: 0.10603589}
     m_Extent: {x: 0.08479935, y: 0.12184145, z: 0.14550945}
   m_DirtyAABB: 0
+--- !u!64 &5546573727108643146
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4645039116101624063}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300008, guid: 4813058df6cbc544c979b2b5b9882a81, type: 3}
 --- !u!1 &4645039116101625965
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,14 +9,16 @@ public class UIInitializer : MonoBehaviour
 
     void Start()
     {
-        PetSpawner.OnPetSpawned += HandlePetSpawned;
+        FluffyInitializer.OnPetSpawned += HandlePetSpawned;
     }
 
     void OnDestroy()
     {
-        PetSpawner.OnPetSpawned -= HandlePetSpawned;
+        FluffyInitializer.OnPetSpawned -= HandlePetSpawned;
     }
 
+    //When we've spawned a pet, turn on the ui panel
+    //Assumption: The ui state will be properly set up in the scene and we don't have to initialize it in code, we can just turn it on in this function
     void HandlePetSpawned(GameObject spawnedPet)
     {
         if (buttonPanel != null)
